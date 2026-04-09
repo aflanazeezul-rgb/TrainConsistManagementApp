@@ -1,62 +1,41 @@
-class PassengerBogieSorter {
+import java.util.Arrays;
 
-    // Method to perform Bubble Sort
-    public static void sortCapacities(int[] capacities) {
-
-        int n = capacities.length;
-
-        // Outer loop for passes
-        for (int i = 0; i < n - 1; i++) {
-
-            // Inner loop for comparisons
-            for (int j = 0; j < n - i - 1; j++) {
-
-                // Compare adjacent elements
-                if (capacities[j] > capacities[j + 1]) {
-
-                    // Swap logic
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    // Method to display array
-    public static void display(int[] capacities) {
-        for (int cap : capacities) {
-            System.out.print(cap + " ");
-        }
-        System.out.println();
-    }
+public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        // Sample passenger bogie capacities
-        int[] capacities = {72, 56, 24, 70, 60};
+        // Sample bogie names
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
 
         System.out.println("Before Sorting:");
-        display(capacities);
+        System.out.println(Arrays.toString(bogieNames));
 
-        // Perform Bubble Sort
-        sortCapacities(capacities);
+        // Sorting using Arrays.sort()
+        Arrays.sort(bogieNames);
 
         System.out.println("After Sorting:");
-        display(capacities);
+        System.out.println(Arrays.toString(bogieNames));
 
         // Additional test cases
 
-        int[] sortedArray = {24, 56, 60, 70, 72};
-        sortCapacities(sortedArray);
+        // Unsorted input
+        String[] test1 = {"Luxury", "General", "Sleeper", "AC Chair"};
+        Arrays.sort(test1);
+        System.out.println("Unsorted Input Sorted: " + Arrays.toString(test1));
 
-        int[] duplicateArray = {72, 56, 56, 24};
-        sortCapacities(duplicateArray);
+        // Already sorted
+        String[] test2 = {"AC Chair", "First Class", "General"};
+        Arrays.sort(test2);
+        System.out.println("Already Sorted: " + Arrays.toString(test2));
 
-        int[] singleElement = {50};
-        sortCapacities(singleElement);
+        // Duplicate values
+        String[] test3 = {"Sleeper", "AC Chair", "Sleeper", "General"};
+        Arrays.sort(test3);
+        System.out.println("Duplicates Handled: " + Arrays.toString(test3));
 
-        int[] allEqual = {40, 40, 40};
-        sortCapacities(allEqual);
+        // Single element
+        String[] test4 = {"Sleeper"};
+        Arrays.sort(test4);
+        System.out.println("Single Element: " + Arrays.toString(test4));
     }
 }
