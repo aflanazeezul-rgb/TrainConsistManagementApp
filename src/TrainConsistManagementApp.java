@@ -1,41 +1,36 @@
-import java.util.Arrays;
-
 public class TrainConsistManagementApp {
+
+
+    public static boolean searchBogie(String[] bogieIds, String searchKey) {
+
+
+        for (int i = 0; i < bogieIds.length; i++) {
+
+
+            if (bogieIds[i].equals(searchKey)) {
+                System.out.println("✅ Bogie ID " + searchKey + " found at position " + i);
+                return true;
+            }
+        }
+
+        // If not found
+        System.out.println("❌ Bogie ID " + searchKey + " not found.");
+        return false;
+    }
 
     public static void main(String[] args) {
 
-        // Sample bogie names
-        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        System.out.println("Before Sorting:");
-        System.out.println(Arrays.toString(bogieNames));
+        searchBogie(bogieIds, "BG309");
 
-        // Sorting using Arrays.sort()
-        Arrays.sort(bogieNames);
+        searchBogie(bogieIds, "BG999");
 
-        System.out.println("After Sorting:");
-        System.out.println(Arrays.toString(bogieNames));
+        searchBogie(bogieIds, "BG101");
 
-        // Additional test cases
+        searchBogie(bogieIds, "BG550");
 
-        // Unsorted input
-        String[] test1 = {"Luxury", "General", "Sleeper", "AC Chair"};
-        Arrays.sort(test1);
-        System.out.println("Unsorted Input Sorted: " + Arrays.toString(test1));
-
-        // Already sorted
-        String[] test2 = {"AC Chair", "First Class", "General"};
-        Arrays.sort(test2);
-        System.out.println("Already Sorted: " + Arrays.toString(test2));
-
-        // Duplicate values
-        String[] test3 = {"Sleeper", "AC Chair", "Sleeper", "General"};
-        Arrays.sort(test3);
-        System.out.println("Duplicates Handled: " + Arrays.toString(test3));
-
-        // Single element
-        String[] test4 = {"Sleeper"};
-        Arrays.sort(test4);
-        System.out.println("Single Element: " + Arrays.toString(test4));
+        String[] single = {"BG101"};
+        searchBogie(single, "BG101");
     }
 }
